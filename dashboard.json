@@ -1,0 +1,243 @@
+{
+	"visualizations": {
+		"viz_Zl5Vrmcu": {
+			"type": "viz.choropleth.svg",
+			"options": {
+				"svg": "splunk-enterprise-kvstore://5eb35895e2edd24b0746fd50"
+			},
+			"dataSources": {
+				"primary": "ds_pwgrnwqY"
+			},
+			"encoding": {
+				"featureId": "primary[0]",
+				"value": "primary[1]",
+				"fill": {
+					"field": "primary[1]",
+					"format": {
+						"type": "rangevalue",
+						"ranges": [
+							{
+								"from": 3,
+								"to": 4,
+								"value": "#0000FF"
+							},
+							{
+								"from": 2,
+								"to": 3,
+								"value": "#00FF00"
+							},
+							{
+								"from": 1,
+								"to": 2,
+								"value": "#FF0000"
+							},
+							{
+								"to": 1,
+								"value": "#00000"
+							}
+						]
+					}
+				}
+			}
+		},
+		"viz_flk4ot2l": {
+			"type": "viz.choropleth.svg",
+			"options": {
+				"svg": "splunk-enterprise-kvstore://5eb35895e2edd24b0746fd50"
+			},
+			"dataSources": {
+				"primary": "ds_pwgrnwqY"
+			},
+			"encoding": {
+				"featureId": "primary[0]",
+				"value": "primary[1]",
+				"fill": {
+					"field": "primary[1]",
+					"format": {
+						"ranges": [
+							"0",
+							"1",
+							"2",
+							"3"
+						],
+						"type": "gradient",
+						"values": [
+							"#000000",
+							"#FF0000",
+							"#00FF00",
+							"#0000FF"
+						]
+					}
+				}
+			}
+		}
+	},
+	"dataSources": {
+		"ds_pwgrnwqY": {
+			"type": "ds.search",
+			"options": {
+				"query": "| makeresults \n| append \n    [| makeresults \n    | eval id=\"hello_world\" \n    | eval count=$hello_world_color$] \n| append \n    [| makeresults \n    | eval id=\"block1\" \n    | eval count=$block1_color$] \n| append \n    [| makeresults \n    | eval id=\"block2\" \n    | eval count=$block2_color$] \n| append \n    [| makeresults \n    | eval id=\"block3\" \n    | eval count=$block3_color$] \n| table id count \n| search id =*"
+			},
+			"name": "Color SVG"
+		}
+	},
+	"inputs": {
+		"input_select_hello_world_color": {
+			"type": "input.dropdown",
+			"title": "Select Hello World Color:",
+			"options": {
+				"token": "hello_world_color",
+				"defaultValue": "0",
+				"items": [
+					{
+						"value": "0",
+						"label": "Black"
+					},
+					{
+						"value": "1",
+						"label": "Red"
+					},
+					{
+						"value": "2",
+						"label": "Green"
+					},
+					{
+						"value": "3",
+						"label": "Blue"
+					}
+				]
+			},
+			"encoding": {
+				"value": "primary.hello_world_color_id",
+				"label": "primary.hello_world_color"
+			}
+		},
+		"block1_color_input": {
+			"type": "input.dropdown",
+			"title": "Select Block 1 Color:",
+			"options": {
+				"token": "block1_color",
+				"defaultValue": "1",
+				"items": [
+					{
+						"value": "0",
+						"label": "Black"
+					},
+					{
+						"value": "1",
+						"label": "Red"
+					},
+					{
+						"value": "2",
+						"label": "Green"
+					},
+					{
+						"value": "3",
+						"label": "Blue"
+					}
+				]
+			},
+			"encoding": {
+				"value": "primary.block1_color_id",
+				"label": "primary.block1_color"
+			}
+		},
+		"block2_color_input": {
+			"type": "input.dropdown",
+			"title": "Select Block 2 Color:",
+			"options": {
+				"token": "block2_color",
+				"defaultValue": "2",
+				"items": [
+					{
+						"value": "0",
+						"label": "Black"
+					},
+					{
+						"value": "1",
+						"label": "Red"
+					},
+					{
+						"value": "2",
+						"label": "Green"
+					},
+					{
+						"value": "3",
+						"label": "Blue"
+					}
+				]
+			},
+			"encoding": {
+				"value": "primary.block2_color_id",
+				"label": "primary.block2_color"
+			}
+		},
+		"block3_color_input": {
+			"type": "input.dropdown",
+			"title": "Select Block 3 Color:",
+			"options": {
+				"token": "block3_color",
+				"defaultValue": "3",
+				"items": [
+					{
+						"value": "0",
+						"label": "Black"
+					},
+					{
+						"value": "1",
+						"label": "Red"
+					},
+					{
+						"value": "2",
+						"label": "Green"
+					},
+					{
+						"value": "3",
+						"label": "Blue"
+					}
+				]
+			},
+			"encoding": {
+				"value": "primary.block3_color_id",
+				"label": "primary.block3_color"
+			}
+		}
+	},
+	"layout": {
+		"type": "absolute",
+		"options": {
+			"height": 300,
+			"width": 700
+		},
+		"structure": [
+			{
+				"item": "viz_Zl5Vrmcu",
+				"type": "block",
+				"position": {
+					"x": 0,
+					"y": 0,
+					"w": 700,
+					"h": 300
+				}
+			},
+			{
+				"item": "viz_flk4ot2l",
+				"type": "block",
+				"position": {
+					"x": 0,
+					"y": 320,
+					"w": 700,
+					"h": 300
+				}
+			}
+		],
+		"globalInputs": [
+			"input_select_hello_world_color",
+			"block1_color_input",
+			"block2_color_input",
+			"block3_color_input"
+		]
+	},
+	"description": "",
+	"title": "Hello World;"
+}
