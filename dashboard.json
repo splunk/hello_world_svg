@@ -3,7 +3,7 @@
 		"viz_Zl5Vrmcu": {
 			"type": "viz.choropleth.svg",
 			"options": {
-				"svg": "splunk-enterprise-kvstore://5eb35895e2edd24b0746fd50"
+				"svg": ""
 			},
 			"dataSources": {
 				"primary": "ds_pwgrnwqY"
@@ -43,7 +43,7 @@
 		"viz_flk4ot2l": {
 			"type": "viz.choropleth.svg",
 			"options": {
-				"svg": "splunk-enterprise-kvstore://5eb35895e2edd24b0746fd50"
+				"svg": ""
 			},
 			"dataSources": {
 				"primary": "ds_pwgrnwqY"
